@@ -98,7 +98,7 @@ void loop() {
   digitalWrite(CSP_T, LOW);
   delay(2);
   duration1 = pulseIn(CSP_E, HIGH);
-  distance1 = (duration*0.0343)/2;
+  distance1 = (duration1*0.0343)/2;
 
   //Sensor2
   digitalWrite(BSP_T, LOW);
@@ -108,15 +108,15 @@ void loop() {
   digitalWrite(BSP_T, LOW);
   delay(2);
   duration2 = pulseIn(BSP_E, HIGH);
-  distance2 = (duration*0.0343)/2;
+  distance2 = (duration2*0.0343)/2;
 
   //The entry gate has two sensors one which will measure the distance between the gate and the top of vehicle
   //the other one will measure the lateral distance between the gate and the vehicle.
   
-  if (distance1 < 100 && distance2 < 60) {
+  if (distance1 < 30 && distance2 < 70) {
     handleVehicleEntry("Car");
     delay(2000); // Avoid multiple triggers
-  } else if (distance1 >= 100 && distance2 >= 60) {
+  } else if (distance1 >= 30 && distance2 >= 70) {
     handleVehicleEntry("Bike");
     delay(2000); // Avoid multiple triggers
   }
